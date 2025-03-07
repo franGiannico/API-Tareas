@@ -1,0 +1,149 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.tab-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.tab.active {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.content {
+    display: none;
+}
+
+.content.active {
+    display: block;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 600px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+select, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Estilo específico para el botón "Agregar Tarea" */
+.add-task-button {
+    margin-top: 10px;
+    background-color: #4CAF50; /* Fondo verde */
+    color: white; /* Texto blanco */
+    padding: 10px 20px; /* Relleno del botón */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+.add-task-button:hover {
+    background-color: #45a049; /* Fondo más oscuro al pasar el mouse */
+}
+
+.add-task-button:focus {
+    outline: none; /* Eliminar borde de foco */
+}
+
+
+.list-container {
+    margin-top: 20px;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos específicos para el botón de check */
+.check-button {
+    color: white; /* Color inicial del tilde dentro del botón */
+    background-color: #ccc; /* Fondo gris inicial */
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.check-button.active {
+    background-color: green; /* Fondo verde cuando se activa */
+}
+
+.check-button:focus {
+    outline: none; /* Eliminar el borde de foco */
+}
+
+/* Estilo cuando la tarea está completada */
+.completed {
+    text-decoration: line-through; /* Tachado solo al texto */
+    color: gray;
+}
+
+
+.task-section {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .tab {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    button {
+        padding: 8px;
+    }
+
+    select, input[type="text"] {
+        padding: 8px;
+    }
+}

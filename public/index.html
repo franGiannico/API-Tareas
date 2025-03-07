@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Gestión de Tareas</h1>
+    <div class="tab-container">
+        <div class="tab active" onclick="mostrarPestaña('cargarTareas', event)">Cargar Tareas</div>
+        <div class="tab" onclick="mostrarPestaña('verTareas', event)">Ver Tareas Pendientes</div>
+    </div>
+
+    <div id="cargarTareas" class="content active">
+        <h2>Agregar Nueva Tarea</h2>
+        <label for="tareaInput">Tarea:</label>
+        <input type="text" id="tareaInput" placeholder="Descripción de la tarea">
+        
+        <label for="prioridadInput">Prioridad:</label>
+        <select id="prioridadInput">
+            <option value="Normal" selected>Normal</option>
+            <option value="Prioritaria">Prioritaria</option>
+        </select>
+
+        <button class="add-task-button" onclick="agregarTarea()">Agregar Tarea</button>
+    </div>
+
+    <div id="verTareas" class="content">
+        <h2>Tareas Pendientes</h2>
+        <div class="list-container">
+            <div class="task-section">
+                <h3>Prioridades</h3>
+                <ul id="listaPrioritarias" class="list"></ul>
+            </div>
+            <div class="task-section">
+                <h3>Tareas</h3>
+                <ul id="listaNormales" class="list"></ul>
+            </div>
+        </div>
+        <button id="limpiar-tareas-completadas">Limpiar Tareas Completadas</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
