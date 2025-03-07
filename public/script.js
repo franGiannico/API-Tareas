@@ -9,7 +9,7 @@ function mostrarPestaña(tab, event) {
 }
 
 function cargarTareas() {
-    fetch('http://localhost:3000/cargar-tareas')
+    fetch('https://api-tareas-5675d982df83.herokuapp.com/cargar-tareas')
         .then(response => response.json())
         .then(data => {
             tareas = data;
@@ -28,13 +28,13 @@ function agregarTarea() {
         completada: false
     };
 
-    fetch('http://localhost:3000/guardar-tareas', {
+    fetch('https://api-tareas-5675d982df83.herokuapp.com/guardar-tareas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify([...tareas, tarea]) // Agregar la nueva tarea a la lista existente
+        body: JSON.stringify([...tareas, tarea])
     })
         .then(() => {
-            cargarTareas(); // Recargar tareas desde el backend
+            cargarTareas();
             tareaInput.value = '';
             prioridadInput.value = 'Normal';
         })
@@ -49,7 +49,7 @@ function mostrarTareas() {
 
     tareas.forEach((tarea, index) => {
         const li = document.createElement("li");
-        
+
         const tareaText = document.createElement("span");
         tareaText.textContent = tarea.descripcion;
         if (tarea.completada) {
@@ -79,7 +79,7 @@ function mostrarTareas() {
 
 function marcarComoCompletada(index) {
     tareas[index].completada = !tareas[index].completada;
-    fetch('http://localhost:3000/guardar-tareas', {
+    fetch('https://api-tareas-5675d982df83.herokuapp.com/guardar-tareas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(tareas)
@@ -89,10 +89,11 @@ function marcarComoCompletada(index) {
 }
 
 function limpiarTareasCompletadas() {
-    fetch('http://localhost:3000/limpiar-tareas', {
+    const tareasNoCompletadas = tareas.filter(tarea => !tarea.completada);
+    fetch('https://api-tareas-5675d982df83.herokuapp.com/guardar-tareas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify([])
+        body: JSON.stringify(tareasNoCompletadas)
     })
         .then(() => cargarTareas())
         .catch(error => console.error('Error al limpiar tareas:', error));
@@ -100,4 +101,4 @@ function limpiarTareasCompletadas() {
 
 document.getElementById("limpiar-tareas-completadas").addEventListener("click", limpiarTareasCompletadas);
 
-mostrarPestaña('cargarTareas'); // Cargar tareas al inicio
+mostrarPestaña('cargarTareas');
